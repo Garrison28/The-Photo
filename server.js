@@ -3,11 +3,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const expressJWT = require('express-jwt');
 const bcrypt = require('bcrypt');
+const helmet = require('helmet')
 
 const app = express();
 
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
+app.use(helmet());
 
 mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;

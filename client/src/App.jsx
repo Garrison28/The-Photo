@@ -9,7 +9,7 @@ class App extends React.Component {
     token: '',
     user: null,
     errorMessage: '',
-    lockedReasult: ''
+    lockedResult: ''
   }
 
   checkForLocalToken = () => {
@@ -74,7 +74,7 @@ class App extends React.Component {
     axios.get('/locked/test', config)
     .then(response => {
       this.setState({
-
+        lockedResult: response.data
       })
     })
   }
@@ -86,7 +86,9 @@ class App extends React.Component {
         <>
           <p>Hello, {this.state.user.name}</p>
           <button onClick={this.handleClick}>Test the protected route</button>
-          <button onClick={this.logout}>Log Out</button>
+          <button onClick={this.logout}>Log Out</button><br />
+          <p>{this.state.lockedReasult}</p>
+
         </>
       )
     } else {
