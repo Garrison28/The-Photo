@@ -19,8 +19,8 @@ class Signup extends React.Component {
     e.preventDefault()
     axios.post('/auth/signup', {
       name: this.state.name,
-      email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      email: this.state.email
     }).then( response => {
       if (response.data.type === 'error') {
         console.log('ERROR:', response.data.message)
@@ -38,7 +38,7 @@ class Signup extends React.Component {
     return(
       <div className='Signup'>
         <h3>Create new account:</h3>
-        <form onSubmit={this.handlesubmit}>
+        <form onSubmit={this.handleSubmit}>
           <input type="text" placeholder="name" name="name" onChange={this.handleChange} value={this.state.name} />
           <input type="text" placeholder="email" name="email" onChange={this.handleChange} value={this.state.email} />
           <input type="password" placeholder="password" name="password" onChange={this.handleChange} value={this.state.password} />

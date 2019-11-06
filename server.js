@@ -19,6 +19,9 @@ db.on('error', (err) => {
 });
 
 app.use('/auth', require(`./routes/auth`));
+app.use('/locked',
+        expressJWT({ secret: process.env.JWT_SECRET }).unless({ method: 'POST'}), 
+        require('./routes/locked'));
 
 app.listen(process.env.PORT, () => {
     console.log(`Your tuning into Port ${process.env.PORT}...`);
