@@ -3,7 +3,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const expressJWT = require('express-jwt');
 const bcrypt = require('bcrypt');
-const helmet = require('helmet')
+const helmet = require('helmet');
+const Photo = require('./models/photo');
+const Category = require('./models/category');
+const Photographer = require('./models/photographer');
 
 const app = express();
 
@@ -20,7 +23,9 @@ db.on('error', (err) => {
     console.log(`Database error:\n${err}`);
 });
 
+
 app.use('/auth', require(`./routes/auth`));
+app.use('/home', require('./routes/index'))
 app.use('/locked',
         expressJWT({ secret: process.env.JWT_SECRET }).unless({ method: 'POST'}), 
         require('./routes/locked'));
