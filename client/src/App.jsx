@@ -3,13 +3,22 @@ import axios from 'axios'
 import './App.css';
 import Login from './Login';
 import Signup from './Signup';
+import Home from './components/Home'
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Link
+} from 'react-router-dom';
 
 class App extends React.Component {
   state = {
     token: '',
     user: null,
     errorMessage: '',
-    lockedResult: ''
+    categories: '',
+    photographers: '',
+    photos: ''
   }
 
   checkForLocalToken = () => {
@@ -42,7 +51,7 @@ class App extends React.Component {
             })
           }
         }
-      )
+        )
     }
   }
 
@@ -71,24 +80,21 @@ class App extends React.Component {
         Authorization: `Bearer ${this.state.token}`
       }
     }
-    axios.get('/locked/test', config)
-    .then(response => {
+    axios.get('/locked/test', config).then( response => {
       this.setState({
         lockedResult: response.data
       })
     })
   }
 
+
   render() {
     let contents;
     if (this.state.user) {
       contents = (
         <>
-          <p>Hello, {this.state.user.name}</p>
-          <button onClick={this.handleClick}>Test the protected route</button>
-          <button onClick={this.logout}>Log Out</button><br />
-          <p>{this.state.lockedReasult}</p>
-
+          < Redirect to='/home/main' />
+          < Route path='/home' render={(props) => <Home {...props} user={this.state.user} lockedResult={this.state.lockedResult} handleClick={this.handleClick} logout={this.logout}/>}/>
         </>
       )
     } else {
@@ -99,16 +105,15 @@ class App extends React.Component {
       )
     }
     return (
-      <div className="App">
-        <header><h1>Welcome to my Site!</h1></header>
-        <div className="content-box">
-          {contents}
-        </div>
-
-      </div>
+      <>
+      <Router>
+        {contents}
+      </Router>
+      </>
     )
   }
 }
+
 
 export default App;
 

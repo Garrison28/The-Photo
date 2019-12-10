@@ -24,6 +24,8 @@ db.on('error', (err) => {
 });
 
 
+
+
 app.use('/auth', require(`./routes/auth`));
 app.use('/home', require('./routes/index'))
 app.use('/locked',

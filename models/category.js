@@ -5,7 +5,8 @@ const categorySchema = new mongoose.Schema({
   id: String,
   name: String,
   content: String,
-  photos: [photoSchema]
+  photographers:[{type: mongoose.Schema.Types.ObjectId, ref: 'Photographers'}],
+  photos: [{type: mongoose.Schema.Types.ObjectId, ref: 'Photo'}]
 })
 
 module.exports = mongoose.model('Category', categorySchema)
