@@ -59,7 +59,7 @@ class EditProfile extends React.Component {
                         <input type="text" name="url" placeholder="URL" onChange={this.handleChange} value={this.state.url}/>
                     </div>
                     <div className="row">
-                        <input class="waves-effect waves-light btn" type="submit" value="SAVE" />
+                        <input class="waves-effect waves-light btn" type="submit" value="SAVE" Redirect='/home/main'/>
                     </div>
                 </form> 
             </div>

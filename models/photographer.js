@@ -7,6 +7,7 @@ const photographerSchema = new mongoose.Schema({
   email: String,
   bio: String,
   linkdin: String,
+  url: String,
   categories:[{type: mongoose.Schema.Types.ObjectId, ref: 'Categories'}],
   photos:[{type: mongoose.Schema.Types.ObjectId, ref: 'Photo'}]
 })

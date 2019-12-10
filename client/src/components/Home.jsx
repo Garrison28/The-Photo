@@ -52,7 +52,7 @@ class Home extends React.Component {
   
 
   grabUserData = () => {
-    axios.get(`/home/${this.state.loggedInUser._id}`)
+    axios.get(`/auth/${this.state.loggedInUser._id}`)
     .then( response => {
       this.setState({
         userData: response.data
@@ -69,7 +69,7 @@ class Home extends React.Component {
       <>
         <Router>
           < HomeHeader logout={this.props.logout} />
-          < Route path='/home/main' render={(props) => <HomeMain {...props} categories={this.state.categories} photos={this.state.photos} userData={this.state.userData} lockedResult={this.state.lockedResult} handleClick={this.state.handleClick}/>}/>
+          < Route path='/home/main' render={(props) => <HomeMain {...props} categories={this.state.categories} photos={this.state.photos} userData={this.state.userData} lockedResult={this.state.lockedResult} handleClick={this.state.handleClick} loggedInUser={this.props.user}/>} />
           < Route path='/home/categories' render={(props) => <Categories {...props} categories={this.state.categories} userData={this.state.userData} handleCategoryOnClick={this.handleCategoryOnClick} />}/>
           < Route path='/home/photos' render={(props) => <Photos {...props} categories={this.state.categories} photographers={this.state.photographers} handlePhotoClick={this.handlePhotoClick} />}/>
           < Route path='/home/weddingphotos' render={(props) => <WeddingPhotos {...props} categories={this.state.categories} photographers={this.state.photographers} photographerid={this.state.photographerid} handlePhotographerOnClick={this.handlePhotographerOnClick} />}/>

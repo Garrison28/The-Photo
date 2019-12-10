@@ -26,7 +26,7 @@ class HomeMain extends React.Component {
             <div className="col s12 m6">
               <div className="card red darken-4 horizontal" style={{ height: '150px' }}>
                 <div className="card-image">
-                  {/* <img className="user-profile-img" src={this.props.userData.url} /> */}
+                  <img className="user-profile-img" src={this.props.userData.url} />
                 </div>
                 <div className="card-stacked">
                   <div className="card-content white-text">
@@ -35,7 +35,7 @@ class HomeMain extends React.Component {
                     <p style={{color: 'black'}}>{this.props.userData.email}</p>
                   </div>
                   <div className="card-action">
-                    {/* <Link to="/EditProfile" className="text-white">Edit Profile</Link> */}
+                    <Link to="/EditProfile" className="text-white">Edit Profile</Link>
                   </div>
                 </div>
               </div>

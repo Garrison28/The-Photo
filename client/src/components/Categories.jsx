@@ -81,23 +81,6 @@ class Categories extends React.Component {
             </div>
           </div>
         </div>
-        {/* <div className="col s12 m6">
-          <div className="card red darken-4 horizontal" style={{ height: '225px' }}>
-            <div className="card-image">
-              <img className="user-profile-img" src={this.props.userData.url} />
-            </div>
-            <div className="card-stacked">
-              <div className="card-content white-text">
-                <span className="card-title">My Profile</span>
-                <p>{this.props.userData.name}</p>
-                <p>{this.props.userData.email}</p>
-              </div>
-              <div className="card-action">
-                <Link to="/EditProfile" className="text-white">Edit Profile</Link>
-              </div>
-            </div>
-          </div>
-        </div> */}
       </div>
       <div className="row">
         <ul className="collection">

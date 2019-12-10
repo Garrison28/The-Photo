@@ -65,18 +65,18 @@ const Photos = (props) => {
     },
     {
       name: 'Mustang',
-      image: '/cars/mustang.jpg'
+      image: '/cars/mustang.jpeg'
     },
   ]
   return (
     <>
-      <div className="container sidebar-active dashboard-bkgrd" style={{ height: '100vh' }}>
+      <div className="container sidebar-active dashboard-bkgrd" style={{ height: '300vh' }}>
         <div className="card-action white-text">
           <h3 className="inline"><Link to={'/home/categories'} className="waves-effect active">Categories</Link></h3><span className="spacer">|</span><h3 className="inline"><Link to={'/home/photographers'} className="waves-effect active">Photographers</Link></h3>
           <span className="spacer">|</span><h3 className="inline"><Link to={'/home/photos'} className="waves-effect active">Photos</Link></h3>
         </div>
         <div className={classes.home}>
-          <h3 className={classes.prompt}>Wedding Photos</h3>
+          <h3 className={classes.prompt}>Wedding Photos By: Sarah Brink</h3>
           <Carousel items={weddingphotos}
           // updateData={props.updateData}
           // updateImage={props.updateImage}
@@ -86,7 +86,7 @@ const Photos = (props) => {
           </a>
         </div>
         <div className={classes.home}>
-          <h3 className={classes.prompt}>Headshots</h3>
+          <h3 className={classes.prompt}>Headshot By: Sarah Brink</h3>
           <Carousel items={headshots}
           // updateData={props.updateData}
           // updateImage={props.updateImage}
@@ -96,7 +96,7 @@ const Photos = (props) => {
           </a>
         </div>
         <div className={classes.home}>
-          <h3 className={classes.prompt}>Cars</h3>
+          <h3 className={classes.prompt}>Cars By: Christina M</h3>
           <Carousel items={cars}
           // updateData={props.updateData}
           // updateImage={props.updateImage}

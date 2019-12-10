@@ -14,18 +14,6 @@ router.get('/photos', (req, res) => {
   });
 });
 
-// router.get('/showPhoto', (req, res) => {
-//   let imgurl = cloudinary.url('photo1kj', {
-//     width: 150, 
-//     height: 150,
-//     responsive: true,
-//     crop: 'fill',
-//     gravity: 'face',
-//     radius: 'max'
-//   })
-//   res.render('showPhoto', { imgurl })
-// })
-
 // GET A photo
 router.get('/photos/:id', (req, res) => {
   Photo.findById(req.params.id, (err, photo) => {
