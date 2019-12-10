@@ -33,6 +33,7 @@ class Photographers extends React.Component {
               <span class="card-title grey-text text-darken-4">{photographer.name}</span>
               <p>{photographer.categories}</p>
               <p className="tutor-bio">{photographer.bio}</p>
+              <a href={photographer.linkdin}>Visit my linkdin!</a><br />
             </div>
             {/* <div class="card-action">
               <Link to="/dashboard/message" className="waves-effect waves-light btn" name={tutor.name} id={tutor._id} onClick={this.props.handleTutorOnClick}><i className="material-icons left"></i>Message</Link>
@@ -45,7 +46,7 @@ class Photographers extends React.Component {
       <div className="container sidebar-active dashboard-bkgrd">
         <div className="row">
           <div className="col m6 s12">
-            <div className="card red darken-4 darken-1" style={{ height: '225px' }}>
+            <div className="card red darken-4 darken-1" style={{ height: '75px' }}>
               <div className="card-content white-text">
                 <span className="card-title">Photographers</span>
               </div>
@@ -55,11 +56,11 @@ class Photographers extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col s12 m6">
+          {/* <div className="col s12 m6">
             <div className="card red darken-4 horizontal" style={{ height: '225px' }}>
               <div className="card-image">
                 {/* <img className="user-profile-img" src={this.props.userData.url} /> */}
-              </div>
+              {/* </div>
               <div className="card-stacked">
                 <div className="card-content white-text">
                   <span className="card-title">My Profile</span>
@@ -71,7 +72,7 @@ class Photographers extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
+              </div> */}
         </div>
         <div className="row">
           <ul>

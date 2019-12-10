@@ -7,6 +7,11 @@ import HomeMain from './HomeMain';
 import Categories from './Categories';
 import Photographers from './Photographers';
 import Photos from './Photos';
+import WeddingPhotos from './WeddingPhotos';
+import HeadshotPhotos from './HeadshotPhotos';
+import EditProfile from './EditProfile';
+import PhotographerDetails from './PhotographerDetails';
+import Carousel from '../carosel/Carousel';
 import {
   BrowserRouter as Router,
   Route,
@@ -44,6 +49,8 @@ class Home extends React.Component {
     })
   }
 
+  
+
   grabUserData = () => {
     axios.get(`/home/${this.state.loggedInUser._id}`)
     .then( response => {
@@ -64,8 +71,11 @@ class Home extends React.Component {
           < HomeHeader logout={this.props.logout} />
           < Route path='/home/main' render={(props) => <HomeMain {...props} categories={this.state.categories} photos={this.state.photos} userData={this.state.userData} lockedResult={this.state.lockedResult} handleClick={this.state.handleClick}/>}/>
           < Route path='/home/categories' render={(props) => <Categories {...props} categories={this.state.categories} userData={this.state.userData} handleCategoryOnClick={this.handleCategoryOnClick} />}/>
-          < Route path='/home/photos' render={(props) => <Photos {...props} />}/>
+          < Route path='/home/photos' render={(props) => <Photos {...props} categories={this.state.categories} photographers={this.state.photographers} handlePhotoClick={this.handlePhotoClick} />}/>
+          < Route path='/home/weddingphotos' render={(props) => <WeddingPhotos {...props} categories={this.state.categories} photographers={this.state.photographers} photographerid={this.state.photographerid} handlePhotographerOnClick={this.handlePhotographerOnClick} />}/>
           < Route path='/home/photographers' render={(props) => <Photographers {...props} categories={this.state.categories} userData={this.state.userData} handlePhotographerOnClick={this.handlePhotographerOnClick} />}/>
+          <Route path='/editprofile' render={(props) => <EditProfile {...props} levelAdd={this.handleLevelOnClick} userData={this.state.userData} lockedResult={this.props.lockedResult} handleClick={this.props.handleClick} logout={this.props.logout}/>}/>
+          {/* < Route path='/home/photographerdetails' render={(props) => <PhotographerDetails {...props} categories={this.state.categories} photographerid={this.state.photographerid} handlePhotographerOnClick={this.handlePhotographerOnClick} />}/> */}
         </Router>
       </>
     )

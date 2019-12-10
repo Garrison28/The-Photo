@@ -1,89 +1,113 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import Carousel from '../carosel/Carousel';
+import { makeStyles } from '@material-ui/styles';
 import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import axios from 'axios';
 
-class Photos extends React.Component {
-  state = {
-    photos: []
+const useStyles = makeStyles({
+  home: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  prompt: {
+    color: 'black',
+  },
+  button: {
+    width: '50vw',
+    height: '10vh',
+    backgroundColor: '#2E88D1',
   }
 
-  grabPhotoData = () => {
-    axios.get('/photos')
-      .then(response => {
-        this.setState({
-          photos: response.data
-        })
-      })
-  }
-  componentDidMount = () => {
-    this.grabPhotoData()
-  }
+})
 
-  render() {
-    let mappedPhotos = this.state.photos.map((photo, id) => {
-      return (
-        <li key={id} className="collection-item">
-          <div className="row">
-            <div className="col s4">
-              <p className="collections-content">{photo.title}</p>
-            </div>
-            <div className="col s5">
-              <span className="subject-cat grey">{photo.img}</span>
-            </div>
-            {/* <div className="col s3">
-                  <Link id={id} to="/home/photos" className="waves-effect waves-light btn" name={photo.title} onClick={this.props.handlePhotosOnClick}><i className="material-icons left"></i></Link>
-                </div> */}
-          </div>
-        </li>
+const Photos = (props) => {
+  const classes = useStyles()
+  const weddingphotos = [
+    {
+      name: 'Wedding Photos',
+      image: '/weddings/thekiss.jpg'
+    },
+    {
+      name: 'Wedding Photos',
+      image: '/weddings/IMG_2553.jpg'
+    },
+    {
+      name: 'Wedding Photos',
+      image: '/weddings/IMG_2554.jpg'
+    }
+  ]
+  const headshots = [
+    {
+      name: 'Headshots',
+      image: '/headshots/IMG_1698.jpg'
+    },
+    {
+      name: 'Headshots',
+      image: '/headshots/IMG_1703.jpg'
+    },
+    {
+      name: 'Headshots',
+      image: '/headshots/IMG_1722.jpg'
+    },
+  ]
 
-      )
-    })
-    return (
-      <div className="container sidebar-active dashboard-bkgrd">
-        <div className="row">
-          <div className="col m6 s12">
-            <div className="card red darken-4 darken-1" style={{ height: '225px' }}>
-              <div className="card-content white-text">
-                <span className="card-title">Categories</span>
-              </div>
-              <div className="card-action white-text">
-                <h3 className="inline"><Link to={'/home/categories'} className="waves-effect active">Categories</Link></h3><span className="spacer">|</span><h3 className="inline"><Link to={'/home/photographers'} className="waves-effect active">Photographers</Link></h3>
-                <span className="spacer">|</span><h3 className="inline"><Link to={'/home/photos'} className="waves-effect active">Photos</Link></h3>
-              </div>
-            </div>
-          </div>
-          <div className="col s12 m6">
-            <div className="card red darken-4 horizontal" style={{ height: '225px' }}>
-              {/* <div className="card-image"> */}
-                {/* <img className="user-profile-img" src={this.props.userData.url} /> */}
-              {/* </div> */}
-              <div className="card-stacked">
-                <div className="card-content white-text">
-                  <span className="card-title">My Profile</span>
-                  <p>{this.props.userData.name}</p>
-                  <p>{this.props.userData.email}</p>
-                </div>
-                <div className="card-action">
-                  <Link to="/EditProfile" className="text-white">Edit Profile</Link>
-                </div>
-              </div>
-            </div>
-          </div>
+  const cars = [
+    {
+      name: 'top 10',
+      image: '/cars/top-ten.jpg'
+    },
+    {
+      name: 'Bugatti Veyron',
+      image: '/cars/bugatti-veyron.jpg'
+    },
+    {
+      name: 'Mustang',
+      image: '/cars/mustang.jpg'
+    },
+  ]
+  return (
+    <>
+      <div className="container sidebar-active dashboard-bkgrd" style={{ height: '100vh' }}>
+        <div className="card-action white-text">
+          <h3 className="inline"><Link to={'/home/categories'} className="waves-effect active">Categories</Link></h3><span className="spacer">|</span><h3 className="inline"><Link to={'/home/photographers'} className="waves-effect active">Photographers</Link></h3>
+          <span className="spacer">|</span><h3 className="inline"><Link to={'/home/photos'} className="waves-effect active">Photos</Link></h3>
         </div>
-        <div className="row">
-          <ul className="collection">
-            <li className="collection-item avatar">
-              <h5>Photos</h5>
-            </li>
-            {mappedPhotos}
-          </ul>
+        <div className={classes.home}>
+          <h3 className={classes.prompt}>Wedding Photos</h3>
+          <Carousel items={weddingphotos}
+          // updateData={props.updateData}
+          // updateImage={props.updateImage}
+          /><br />
+          <a href="/home/photographers/5deeb660a29dcd0eb35d53c2">
+            <Button className={classes.button}>Go to the Photographer!</Button>
+          </a>
+        </div>
+        <div className={classes.home}>
+          <h3 className={classes.prompt}>Headshots</h3>
+          <Carousel items={headshots}
+          // updateData={props.updateData}
+          // updateImage={props.updateImage}
+          /><br />
+          <a href="/home/photographers/5deeb660a29dcd0eb35d53c2">
+            <Button className={classes.button}>Go to the Photographer!</Button>
+          </a>
+        </div>
+        <div className={classes.home}>
+          <h3 className={classes.prompt}>Cars</h3>
+          <Carousel items={cars}
+          // updateData={props.updateData}
+          // updateImage={props.updateImage}
+          /><br />
+          <a href="/home/photographers/5deeb660a29dcd0eb35d53c2">
+            <Button className={classes.button}>Go to the Photographer!</Button>
+          </a>
         </div>
       </div>
-
-
-    )
-  }
-
+    </>
+  )
 }
 
 export default Photos;
