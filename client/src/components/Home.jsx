@@ -85,12 +85,3 @@ class Home extends React.Component {
 }
 
 export default Home;
-
-
-
-{/* <p>Hello, {this.state.user.name}</p>
-          <button onClick={this.handleCategoryClick}>Categories</button>{' | '}
-          <button onClick={this.handlePhotographerClick}>Photographers</button>{' | '}
-          <button onClick={this.handlePhotoClick}>Photos</button>{' | '}
-          <button onClick={this.logout}>Log Out</button><br />
-          <p>{this.state.lockedReasult}</p> */}

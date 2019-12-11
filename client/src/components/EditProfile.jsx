@@ -31,7 +31,7 @@ class EditProfile extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        axios.put(`/dashboard/${this.props.userData._id}`, {
+        axios.put(`/home/${this.props.userData._id}`, {
             name: this.state.name,
             email: this.state.email,
             bio: this.state.bio,
