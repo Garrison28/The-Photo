@@ -2,9 +2,9 @@
 
 
 ## Table of contents
-* [General Info] (#general-info)
-* [Technologies] (#technologies)
-* [Journal] (#journal)
+* [General Info](#general-info)
+* [Technologies](#technologies)
+* [Journal](#journal)
 
 ## General info
 an app to connect you, the user, to a photographer
