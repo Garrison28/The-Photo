@@ -44,6 +44,7 @@ class Categories extends React.Component {
 
   componentDidMount = () => {
     this.grabCategoryData()
+    this.propsIntoState()
   }
 
   propsIntoState = () => {
