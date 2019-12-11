@@ -29,6 +29,7 @@ my models and made my User stories.
 Finished writing my routes
 ![index.js](./routes/index.js)
 I also started working on my react components and making the react carousel component.
+![Carousel.jsx](./client/src/carosel/Carousel.jsx)
 
 ### Day 5
 Finished working on my front end, had a really hard time with cloudinary and
