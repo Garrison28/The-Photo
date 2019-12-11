@@ -124,7 +124,7 @@ class Categories extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="row">
                         <input type="text" name="name" placeholder="Name" onChange={this.handleChange} value={this.state.name} /><br />
-                        <input type="text" name="email" placeholder="Email" onChange={this.handleChange} value={this.state.content} /><br />
+                        <input type="text" name="content" placeholder="Content" onChange={this.handleChange} value={this.state.content} /><br />
                     </div>
                     <div className="row">
                         <input class="waves-effect waves-light btn" type="submit" value="SAVE" Redirect='/home/categories' />
