@@ -28,7 +28,9 @@ const useStyles = makeStyles({
 
 class Categories extends React.Component {
   state = {
-    categories: []
+    categories: [],
+    name: '',
+    content: ''
   }
 
   grabCategoryData = () => {
@@ -43,6 +45,35 @@ class Categories extends React.Component {
   componentDidMount = () => {
     this.grabCategoryData()
   }
+
+  propsIntoState = () => {
+    this.setState({
+        name: this.props.categories.name,
+        email: this.props.categories.content
+    })
+}
+
+  handleChange = (e) => {
+    this.setState({
+        [e.target.name]: e.target.value
+    })
+}
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    axios.put(`/home/${this.props.categories}`, {
+        name: this.props.categories.name,
+        content: this.props.categories.content,
+    }).then(response => {
+        if (response.data.type === 'error') {
+            console.log("ERROR:", response.data.message)
+        } else {
+            console.log("Successfuly sent message")
+        }
+    }).catch(err => {
+        console.log(err)
+    })
+}
 
   render() {
 
@@ -87,7 +118,20 @@ class Categories extends React.Component {
           {mappedCategories}
         </ul>
       </div>
+      <div className='container sidebar-active dashboard-bkgrd'>
+      <h3>Add category</h3>
+                <form onSubmit={this.handleSubmit}>
+                    <div className="row">
+                        <input type="text" name="name" placeholder="Name" onChange={this.handleChange} value={this.state.name} /><br />
+                        <input type="text" name="email" placeholder="Email" onChange={this.handleChange} value={this.state.content} /><br />
+                    </div>
+                    <div className="row">
+                        <input class="waves-effect waves-light btn" type="submit" value="SAVE" Redirect='/home/categories' />
+                    </div>
+                </form>
       </div>
+      </div>
+      
     )
   }
 }
