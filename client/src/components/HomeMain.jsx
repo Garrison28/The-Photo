@@ -13,7 +13,7 @@ class HomeMain extends React.Component {
         <div className="container sidebar-active dashboard-bkgrd">
           <div className="row">
             <div className="col m6 s12">
-              <div className="card red darken-4 darken-1" style={{ height: '75px' }}>
+              <div className="card red darken-4 darken-1" >
                 <div className="card-content white-text">
                   <span className="card-title"></span>
                 </div>
@@ -23,8 +23,8 @@ class HomeMain extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col s12 m6">
-              <div className="card red darken-4 horizontal" style={{ height: '150px' }}>
+            <div className="col s12 m6 profile">
+              <div className="card red darken-4 horizontal">
                 <div className="card-image">
                   <img className="user-profile-img" src={this.props.userData.url} />
                 </div>
@@ -36,6 +36,9 @@ class HomeMain extends React.Component {
                   </div>
                   <div className="card-action">
                     <Link to="/EditProfile" className="text-white">Edit Profile</Link>
+                  </div>
+                  <div>
+                    <h1>Welcome {this.props.userData.name}!  </h1>
                   </div>
                 </div>
               </div>

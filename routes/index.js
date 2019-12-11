@@ -5,6 +5,35 @@ const Photo = require('../models/photo');
 const Category = require('../models/category');
 const Photographer = require('../models/photographer');
 const cloudinary = require('cloudinary');
+const multer = require('multer');
+const upload = multer({ dest: './uploads/'});
+
+router.get('/users', (req, res) => {
+  User.find({}, (err, users) => {
+      //all users
+      res.json(users);
+      console.log(`Found ALL users!1!`);
+  });
+});
+
+// GET one user by id whether student or tutor
+router.get('/users/:id', (req, res) => {
+  User.findById(req.params.id, (err, user) => {
+      // one user
+      res.json(user);
+      console.log(`found ONE user`);
+  });
+});
+
+// PUT: Update User profile
+router.put('/users/:id', (req, res) => {
+  User.findById(req.params.id, (err, user) => {
+      user.update(req.body, (err, user) => {
+          res.json(user);
+          console.log('User has been updated')
+      });
+  });
+});
 
 // GET all photos
 router.get('/photos', (req, res) => {
@@ -111,6 +140,23 @@ router.post('/categories', (req, res) => {
   });
 });
 
+router.post('/photos', upload.single('myFile'),function(req, res) {
+  cloudinary.uploader.upload(req.file.path, function(result) {
+    console.log(result);
+    res.redirect('/photos')
+  });
+});
 
+router.get('/photos', function(req, res) {
+  let imgUrl = cloudinary.url('l7ou3i5dxyoudgxrquh5', { 
+    width: 300, 
+    height: 300,
+    responsive: true,
+    crop: 'fill',
+    gravity: 'face',
+    radius: 'max'
+  })
+  res.render('photos', { imgUrl })
+})
 
 module.exports = router;

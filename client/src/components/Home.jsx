@@ -10,8 +10,8 @@ import Photos from './Photos';
 import WeddingPhotos from './WeddingPhotos';
 import HeadshotPhotos from './HeadshotPhotos';
 import EditProfile from './EditProfile';
+import AddPhoto from './AddPhoto';
 import PhotographerDetails from './PhotographerDetails';
-import Carousel from '../carosel/Carousel';
 import {
   BrowserRouter as Router,
   Route,
@@ -52,7 +52,7 @@ class Home extends React.Component {
   
 
   grabUserData = () => {
-    axios.get(`/auth/${this.state.loggedInUser._id}`)
+    axios.get(`/home/users/${this.state.loggedInUser._id}`)
     .then( response => {
       this.setState({
         userData: response.data
@@ -74,7 +74,8 @@ class Home extends React.Component {
           < Route path='/home/photos' render={(props) => <Photos {...props} categories={this.state.categories} photographers={this.state.photographers} handlePhotoClick={this.handlePhotoClick} />}/>
           < Route path='/home/weddingphotos' render={(props) => <WeddingPhotos {...props} categories={this.state.categories} photographers={this.state.photographers} photographerid={this.state.photographerid} handlePhotographerOnClick={this.handlePhotographerOnClick} />}/>
           < Route path='/home/photographers' render={(props) => <Photographers {...props} categories={this.state.categories} userData={this.state.userData} handlePhotographerOnClick={this.handlePhotographerOnClick} />}/>
-          <Route path='/editprofile' render={(props) => <EditProfile {...props} levelAdd={this.handleLevelOnClick} userData={this.state.userData} lockedResult={this.props.lockedResult} handleClick={this.props.handleClick} logout={this.props.logout}/>}/>
+          < Route path='/editprofile' render={(props) => <EditProfile {...props} userData={this.state.userData} lockedResult={this.props.lockedResult} handleClick={this.props.handleClick} logout={this.props.logout}/>}/>
+          {/* < Route path='/home/addphoto' render={(props) => <AddPhoto {...props} userData={this.state.userData} photos={this.state.photos} photographers={this.state.photographers} categories={this.state.categories} />}/> */}
           {/* < Route path='/home/photographerdetails' render={(props) => <PhotographerDetails {...props} categories={this.state.categories} photographerid={this.state.photographerid} handlePhotographerOnClick={this.handlePhotographerOnClick} />}/> */}
         </Router>
       </>

@@ -33,7 +33,7 @@ class Login extends React.Component {
   }
   render() {
     return(
-      <div className="Login">
+      <div className="container dashboard-bkgrd">
         <h3>Login!</h3>
         <form onSubmit={this.handleSubmit}>
           <input type="text" placeholder="email" name="email" onChange={this.handleChange} value={this.state.email} />

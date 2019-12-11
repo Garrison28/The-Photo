@@ -7,6 +7,8 @@ const helmet = require('helmet');
 const Photo = require('./models/photo');
 const Category = require('./models/category');
 const Photographer = require('./models/photographer');
+const multer = require('multer');
+const upload = multer({ dest: './uploads/'});
 
 const app = express();
 

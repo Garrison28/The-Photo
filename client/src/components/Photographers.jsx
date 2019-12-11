@@ -43,7 +43,7 @@ class Photographers extends React.Component {
       <div className="container sidebar-active dashboard-bkgrd">
         <div className="row">
           <div className="col m6 s12">
-            <div className="card red darken-4 darken-1" style={{ height: '75px' }}>
+            <div className="card red darken-4 darken-1">
               <div className="card-content white-text">
                 <span className="card-title">Photographers</span>
               </div>
@@ -54,7 +54,7 @@ class Photographers extends React.Component {
             </div>
           </div>
           <div className="col s12 m6">
-            <div className="card red darken-4 horizontal" style={{ height: '225px' }}>
+            <div className="card red darken-4 horizontal">
               <div className="card-image">
                 <img className="user-profile-img" src={this.props.userData.url} />
               </div>

@@ -36,32 +36,32 @@ class EditProfile extends React.Component {
             email: this.state.email,
             bio: this.state.bio,
             url: this.state.url
-        }).then( response => {
+        }).then(response => {
             if (response.data.type === 'error') {
-              console.log("ERROR:", response.data.message)
+                console.log("ERROR:", response.data.message)
             } else {
-              console.log("Successfuly sent message")
+                console.log("Successfuly sent message")
             }
-        }).catch( err => {
+        }).catch(err => {
             console.log(err)
         })
-    }    
-    
+    }
+
     render() {
         return (
-            <div className='container sidebar-active'>
+            <div className='container sidebar-active dashboard-bkgrd'>
                 <h3>Edit Your Profile Now</h3>
                 <form onSubmit={this.handleSubmit}>
                     <div className="row">
-                        <input type="text" name="name" placeholder="Name" onChange={this.handleChange} value={this.state.name}/><br />
-                        <input type="text" name="email" placeholder="Email" onChange={this.handleChange} value={this.state.email}/><br />
-                        <input type="text" name="bio" placeholder="Bio" onChange={this.handleChange} value={this.state.bio}/>
-                        <input type="text" name="url" placeholder="URL" onChange={this.handleChange} value={this.state.url}/>
+                        <input type="text" name="name" placeholder="Name" onChange={this.handleChange} value={this.state.name} /><br />
+                        <input type="text" name="email" placeholder="Email" onChange={this.handleChange} value={this.state.email} /><br />
+                        <input type="text" name="bio" placeholder="Bio" onChange={this.handleChange} value={this.state.bio} />
+                        <input type="text" name="url" placeholder="URL" onChange={this.handleChange} value={this.state.url} />
                     </div>
                     <div className="row">
-                        <input class="waves-effect waves-light btn" type="submit" value="SAVE" Redirect='/home/main'/>
+                        <input class="waves-effect waves-light btn" type="submit" value="SAVE" Redirect='/home/main' />
                     </div>
-                </form> 
+                </form>
             </div>
         )
     }
