@@ -27,4 +27,13 @@ my models and made my User stories.
 
 ### Day 4
 Finished writing my routes
-![index.js](./routes/index.js) 
+![index.js](./routes/index.js)
+I also started working on my react components and making the react carousel component.
+
+### Day 5
+Finished working on my front end, had a really hard time with cloudinary and
+in the end was unable to use it in my project, but I have set it as a goal to
+incorperate in my app post cohort as one of my main stretch goals.
+
+## Achknowlegments
+Thank you to Steve Peters and Sarah King in being great teachers who helped us whenever I needed it, also to Sarah Brink who gave me the idea for this app.
