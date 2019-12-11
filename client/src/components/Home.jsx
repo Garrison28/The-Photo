@@ -75,7 +75,7 @@ class Home extends React.Component {
           < Route path='/home/weddingphotos' render={(props) => <WeddingPhotos {...props} categories={this.state.categories} photographers={this.state.photographers} photographerid={this.state.photographerid} handlePhotographerOnClick={this.handlePhotographerOnClick} />}/>
           < Route path='/home/photographers' render={(props) => <Photographers {...props} categories={this.state.categories} userData={this.state.userData} handlePhotographerOnClick={this.handlePhotographerOnClick} />}/>
           < Route path='/editprofile' render={(props) => <EditProfile {...props} userData={this.state.userData} lockedResult={this.props.lockedResult} handleClick={this.props.handleClick} logout={this.props.logout}/>}/>
-          {/* < Route path='/home/addphoto' render={(props) => <AddPhoto {...props} userData={this.state.userData} photos={this.state.photos} photographers={this.state.photographers} categories={this.state.categories} />}/> */}
+          < Route path='/home/addphoto' render={(props) => <AddPhoto {...props} userData={this.state.userData} photos={this.state.photos} photographers={this.state.photographers} categories={this.state.categories} />}/>
           {/* < Route path='/home/photographerdetails' render={(props) => <PhotographerDetails {...props} categories={this.state.categories} photographerid={this.state.photographerid} handlePhotographerOnClick={this.handlePhotographerOnClick} />}/> */}
         </Router>
       </>

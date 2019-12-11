@@ -34,6 +34,10 @@ app.use('/locked',
         expressJWT({ secret: process.env.JWT_SECRET }).unless({ method: 'POST'}), 
         require('./routes/locked'));
 
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/client/build/index.html')
+})
+
 app.listen(process.env.PORT, () => {
     console.log(`Your tuning into Port ${process.env.PORT}...`);
 });

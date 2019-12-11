@@ -16,7 +16,7 @@ router.get('/users', (req, res) => {
   });
 });
 
-// GET one user by id whether student or tutor
+// GET one user by id 
 router.get('/users/:id', (req, res) => {
   User.findById(req.params.id, (err, user) => {
       // one user
