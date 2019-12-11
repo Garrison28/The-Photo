@@ -5,6 +5,7 @@
 * [General Info](#general-info)
 * [Technologies](#technologies)
 * [Journal](#journal)
+* [Achknowledgements](#achknowledgements)
 
 ## General info
 an app to connect you, the user, to a photographer
@@ -36,5 +37,5 @@ Finished working on my front end, had a really hard time with cloudinary and
 in the end was unable to use it in my project, but I have set it as a goal to
 incorperate in my app post cohort as one of my main stretch goals.
 
-## Achknowlegments
+## Achknowledgments
 Thank you to Steve Peters and Sarah King in being great teachers who helped us whenever I needed it, also to Sarah Brink who gave me the idea for this app.
