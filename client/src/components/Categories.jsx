@@ -62,9 +62,9 @@ class Categories extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    axios.put(`/home/${this.props.categories}`, {
-        name: this.props.categories.name,
-        content: this.props.categories.content,
+    axios.put(`/home/categories`, {
+        name: this.state.categories.name,
+        content: this.state.categories.content,
     }).then(response => {
         if (response.data.type === 'error') {
             console.log("ERROR:", response.data.message)
