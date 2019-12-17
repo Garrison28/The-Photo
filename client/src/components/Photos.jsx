@@ -125,7 +125,7 @@ const Photos = (props) => {
         </div>
         <div className={classes.home}>
           <h3 className={classes.prompt}>Headshot By: Sarah Brink</h3>
-          <Carousel items={headshots}
+          <Carousel items={myMappedImages}
           // updateData={props.updateData}
           // updateImage={props.updateImage}
           /><br />
