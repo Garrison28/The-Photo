@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { CloudinaryContext, Transformation, Image } from 'cloudinary-react';
 
 class AddPhoto extends React.Component {
