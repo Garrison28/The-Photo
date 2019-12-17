@@ -20,9 +20,11 @@ const userSchema = new mongoose.Schema({
     minlength: [5, 'Email must be between 5 and 128 characters'],
     maxlength: [128, 'Email must be between 5 and 128 characters']
   },
+  photographer: Boolean,
   avatar: String,
   bio: String,
   url: String,
+  photos: [],
 });
 
 userSchema.set('toObject', {
@@ -30,8 +32,10 @@ userSchema.set('toObject', {
     let returnJson = {
       _id: ret._id,
       email: ret.email,
-      name: ret.name
+      name: ret.name,
+      photographer: ret.photographer
     }
+    // console.log(ret.tphotographer)
     return returnJson;
   }
 });

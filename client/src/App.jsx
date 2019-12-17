@@ -13,7 +13,7 @@ import {
 
 class App extends React.Component {
   state = {
-    token: '',
+    // token: '',
     user: null,
     errorMessage: '',
     categories: '',

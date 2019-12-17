@@ -19,7 +19,7 @@ class HomeMain extends React.Component {
                 </div>
                 <div className="card-action white-text">
                   <h3 className="inline"><Link to={'/home/categories'} className="waves-effect active">Categories</Link></h3><span className="spacer">|</span><h3 className="inline"><Link to={'/home/photographers'} className="waves-effect active">Photographers</Link></h3>
-                  <span className="spacer">|</span><h3 className="inline"><Link to={'/home/photos'} className="waves-effect active">Photos</Link></h3><h3 className="inline"><Link to={'/home/addphoto'} className="waves-effect active">Add Photos</Link></h3>
+                  <span className="spacer">|</span><h3 className="inline"><Link to={'/home/photos'} className="waves-effect active">Photos</Link></h3><span className="spacer">|</span><h3 className="inline"><Link to={'/home/addphoto'} className="waves-effect active">Add Photos</Link></h3>
                 </div>
               </div>
             </div>

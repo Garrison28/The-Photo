@@ -1,44 +1,88 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { CloudinaryContext, Transformation, Image } from 'cloudinary-react';
 
 class AddPhoto extends React.Component {
   state = {
-    image: '',
-    loading: false
+    selectedImage: '',
+    displayImage: '',
+    loading: false,
+    userData: [],
   }
 
   uploadImage = e => {
     const files = e.target.files
     const data = new FormData()
-    console.log(files)
+    // console.log(files)
     data.append('file', files[0])
-    data.append('upload_preset', 'sxpvc5hj')
+    data.append('cloud_name', 'thisguysoftware28')
+    data.append('upload_preset', 'garrison')
     data.append("api_key", '236216458223811');
+    data.append('tags', ['wedding'])
     axios.post('https://api.cloudinary.com/v1_1/thisguysoftware28/image/upload', data)
       .then(response => {
-        console.log(response.data)
+        console.log('----------------------------', this.props.logUse)
+        axios.post(`/home/photos`, { theImage: response.data.secure_url, theUserId: this.props.logUse._id }).then(
+          console.log(response.data),
+          console.log('the final console log', response.data.public_id))
         this.setState({
-          image: response.data.secure_url
+          displayImage: response.data.secure_url
         })
       })
   }
+
+  //   uploadWidget() {
+  //     cloudinary.openUploadWidget({ cloud_name: 'thisguysoftware28', upload_preset: 'garrison', tags:['wedding']},
+  //         function(error, result) {
+  //             console.log(result);
+  //         });
+  // }
+
+
+  // componentDidMount = () => {
+  //   axios.get('http://res.cloudinary.com/v1_1/thisguysoftware28/image/thePhoto/weddings.json')
+  //     .then(res => {
+  //       console.log(res.data.resources);
+  //       this.setState({
+  //         gallery: res.data.resources
+  //       })
+  //     })
+  // }
   render() {
-    {
-      var content = this.state.loading ? (
-        <h3>Loading...</h3>
-      ) : (
-          <img src={this.state.image} style={{ width: '300px' }} />
+    console.log(this.props.logUse)
+    var content;
+    if (this.props.logUse.photographer === true) {
+      content = (
+            <div className="container sidebar-active dashboard-bkgrd">
+              <h1 className="inline">Upload Image</h1>
+              <input
+                type="file"
+                name="file"
+                placeholder="Upload an image"
+                onChange={this.uploadImage}
+              />
+              <img src={this.state.displayImage} style={{ width: '300px' }} />
+            </div>
+          )
+      } else {
+        content = (
+          <h1>You must be a photographer to to add photos</h1>
         )
     }
+
+
     return (
+      // <>
+      
       <div className="container sidebar-active dashboard-bkgrd">
-        <h1 className="inline">Upload Image</h1>
+        {/* <h1 className="inline">Upload Image</h1>
         <input
           type="file"
           name="file"
           placeholder="Upload an image"
           onChange={this.uploadImage}
-        />
+        /> */}
+      {/* <div className="container sidebar-active dashboard-bkgrd"> */}
         {content}
       </div>
     )

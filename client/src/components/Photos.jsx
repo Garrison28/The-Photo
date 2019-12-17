@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
+
 const useStyles = makeStyles({
   home: {
     display: 'flex',
@@ -24,6 +25,16 @@ const useStyles = makeStyles({
 })
 
 const Photos = (props) => {
+  const [userImages, setUserImages] = useState([])
+
+  useEffect(() => {
+    console.log(props)
+    axios.get(`/home/photos/all/${props.logUse._id}`).then(response => {
+      console.log(response.data)
+      setUserImages(response.data)
+    })
+  }, [])
+
   const classes = useStyles()
   const weddingphotos = [
     {
@@ -68,13 +79,40 @@ const Photos = (props) => {
       image: '/cars/mustang.jpeg'
     },
   ]
+
+
+
+  var myImages;
+  if (userImages) {
+    console.log('these are my userImages', userImages)
+    var myMappedImages = userImages.map((ele, id) => <img key={id} src={ele}/>)
+    myImages = (
+      <>
+        {myMappedImages}
+      </>
+    )
+  } else {
+    myImages = ('loading')
+  }
+  // let myMappedImages = userImages.map((ele, id) => {
+  //   return(
+  //     <li key={id} className="collection-item">
+  //         <div className="row">
+  //           <div className="col s4">
+  //             <src className="subject-title">{user.photos}</src>
+              
+  //           </div>
+  //         </div>
+  //     </li>
+  //   )
+  // })
   return (
     <>
       <div className="container sidebar-active dashboard-bkgrd" style={{ height: '300vh' }}>
-        <div className="card-action white-text">
-          <h3 className="inline"><Link to={'/home/categories'} className="waves-effect active">Categories</Link></h3><span className="spacer">|</span><h3 className="inline"><Link to={'/home/photographers'} className="waves-effect active">Photographers</Link></h3>
-          <span className="spacer">|</span><h3 className="inline"><Link to={'/home/photos'} className="waves-effect active">Photos</Link></h3>
-        </div>
+      <div className="card-action white-text">
+                  <h3 className="inline"><Link to={'/home/categories'} className="waves-effect active">Categories</Link></h3><span className="spacer">|</span><h3 className="inline"><Link to={'/home/photographers'} className="waves-effect active">Photographers</Link></h3>
+                  <span className="spacer">|</span><h3 className="inline"><Link to={'/home/photos'} className="waves-effect active">Photos</Link></h3><span className="spacer">|</span><h3 className="inline"><Link to={'/home/addphoto'} className="waves-effect active">Add Photos</Link></h3>
+                </div>
         <div className={classes.home}>
           <h3 className={classes.prompt}>Wedding Photos By: Sarah Brink</h3>
           <Carousel items={weddingphotos}
@@ -104,6 +142,9 @@ const Photos = (props) => {
           <a href="/home/photographers/5deeb660a29dcd0eb35d53c2">
             <Button className={classes.button}>Go to the Photographer!</Button>
           </a>
+        </div>
+        <div>
+          {myMappedImages}
         </div>
       </div>
     </>

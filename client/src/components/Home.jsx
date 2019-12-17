@@ -71,11 +71,11 @@ class Home extends React.Component {
           < HomeHeader logout={this.props.logout} />
           < Route path='/home/main' render={(props) => <HomeMain {...props} categories={this.state.categories} photos={this.state.photos} userData={this.state.userData} lockedResult={this.state.lockedResult} handleClick={this.state.handleClick} loggedInUser={this.props.user}/>} />
           < Route path='/home/categories' render={(props) => <Categories {...props} categories={this.state.categories} userData={this.state.userData} handleCategoryOnClick={this.handleCategoryOnClick} />}/>
-          < Route path='/home/photos' render={(props) => <Photos {...props} categories={this.state.categories} photographers={this.state.photographers} handlePhotoClick={this.handlePhotoClick} />}/>
+          < Route path='/home/photos' render={(props) => <Photos {...props} logUse = {this.state.loggedInUser} categories={this.state.categories} photographers={this.state.photographers} handlePhotoClick={this.handlePhotoClick} />}/>
           < Route path='/home/weddingphotos' render={(props) => <WeddingPhotos {...props} categories={this.state.categories} photographers={this.state.photographers} photographerid={this.state.photographerid} handlePhotographerOnClick={this.handlePhotographerOnClick} />}/>
           < Route path='/home/photographers' render={(props) => <Photographers {...props} categories={this.state.categories} userData={this.state.userData} handlePhotographerOnClick={this.handlePhotographerOnClick} />}/>
           < Route path='/editprofile' render={(props) => <EditProfile {...props} userData={this.state.userData} lockedResult={this.props.lockedResult} handleClick={this.props.handleClick} logout={this.props.logout}/>}/>
-          < Route path='/home/addphoto' render={(props) => <AddPhoto {...props} userData={this.state.userData} photos={this.state.photos} photographers={this.state.photographers} categories={this.state.categories} />}/>
+          < Route path='/home/addphoto' render={(props) => <AddPhoto {...props} logUse = {this.state.loggedInUser} userData={this.state.userData} photos={this.state.photos} photographers={this.state.photographers} categories={this.state.categories} />}/>
           {/* < Route path='/home/photographerdetails' render={(props) => <PhotographerDetails {...props} categories={this.state.categories} photographerid={this.state.photographerid} handlePhotographerOnClick={this.handlePhotographerOnClick} />}/> */}
         </Router>
       </>

@@ -9,6 +9,8 @@ const Category = require('./models/category');
 const Photographer = require('./models/photographer');
 const multer = require('multer');
 const upload = multer({ dest: './uploads/'});
+const cloudinary = require('cloudinary');
+const User = require('./models/user');
 
 const app = express();
 
@@ -26,6 +28,14 @@ db.on('error', (err) => {
     console.log(`Database error:\n${err}`);
 });
 
+let user = new User({
+    name: "Garrison",
+    email: "ghighsmith28@gmil.com",
+    password: "password",
+    photographer: true
+})
+
+// user.save(console.log(user))
 
 app.use('/auth', require(`./routes/auth`));
 app.use('/home', require('./routes/index'))

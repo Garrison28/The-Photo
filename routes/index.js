@@ -4,34 +4,68 @@ const User = require('../models/user');
 const Photo = require('../models/photo');
 const Category = require('../models/category');
 const Photographer = require('../models/photographer');
-const cloudinary = require('cloudinary');
+const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
-const upload = multer({ dest: './uploads/'});
+const upload = multer({ dest: './uploads/' });
+const cloudinaryStorage = require("multer-storage-cloudinary");
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+});
+const storage = cloudinaryStorage({
+  cloudinary: cloudinary,
+  folder: "thePhoto",
+  allowedFormats: ["jpg", "png"],
+  transformation: [{ width: 500, height: 500, crop: "limit" }]
+});
+const parser = multer({ storage: storage });
+
+
+router.post('/photos', (req, res) => {
+  console.log('----------------------------------------------', req.body)
+  User.findById(req.body.theUserId, (err, user) => {
+    user.photos.push(req.body.theImage)
+    console.log('the user.photos before save', user.photos)
+    user.save()
+    console.log('the user.photos after save', user.photos)
+    res.json(user.photos)
+  })
+});
+
+router.get('/photos/all/:id', (req, res) => {
+  console.log('hit the /photos/all route', req.params)
+  User.findById(req.params.id, (err, user) => {
+    console.log('in the getting user photos route', user)
+    res.json(user.photos)
+  })
+})
 
 router.get('/users', (req, res) => {
   User.find({}, (err, users) => {
-      //all users
-      res.json(users);
-      console.log(`Found ALL users!1!`);
+    //all users
+    res.json(users);
+    console.log(`Found ALL users!1!`);
   });
 });
 
 // GET one user by id 
 router.get('/users/:id', (req, res) => {
   User.findById(req.params.id, (err, user) => {
-      // one user
-      res.json(user);
-      console.log(`found ONE user`);
+    // one user
+    res.json(user);
+    console.log(`found ONE user`);
   });
 });
 
 // PUT: Update User profile
 router.put('/users/:id', (req, res) => {
   User.findById(req.params.id, (err, user) => {
-      user.update(req.body, (err, user) => {
-          res.json(user);
-          console.log('User has been updated')
-      });
+    user.update(req.body, (err, user) => {
+      res.json(user);
+      console.log('User has been updated')
+    });
   });
 });
 
@@ -52,13 +86,19 @@ router.get('/photos/:id', (req, res) => {
 });
 
 // POST create a photo
-router.post('/photos', (req, res) => {
-  Photo.create(req.body, (err, photo) => {
-    res.json(photo);
-    console.log(err);
-    console.log('Photo created');
-  });
-});
+// router.post('/photos', (req, res, next) => {
+//   const file = req.files.photo;
+//   console.log(file)
+//   cloudinary.uploader.upload(req.file.path, function(result) {
+
+// }
+// Photo.create(req.body, (err, photo) => {
+//   res.json(photo);
+//   console.log(err);
+//   console.log('Photo created');
+// });
+// });
+
 
 // DELETE photo
 router.delete('/photos/:id', (req, res) => {
@@ -140,23 +180,5 @@ router.post('/categories', (req, res) => {
   });
 });
 
-router.post('/photos', upload.single('myFile'),function(req, res) {
-  cloudinary.uploader.upload(req.file.path, function(result) {
-    console.log(result);
-    res.redirect('/photos')
-  });
-});
-
-router.get('/photos', function(req, res) {
-  let imgUrl = cloudinary.url('l7ou3i5dxyoudgxrquh5', { 
-    width: 300, 
-    height: 300,
-    responsive: true,
-    crop: 'fill',
-    gravity: 'face',
-    radius: 'max'
-  })
-  res.render('photos', { imgUrl })
-})
 
 module.exports = router;

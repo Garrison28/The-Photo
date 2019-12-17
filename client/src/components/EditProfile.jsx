@@ -19,7 +19,8 @@ class EditProfile extends React.Component {
             name: this.props.userData.name,
             email: this.props.userData.email,
             bio: this.props.userData.bio,
-            url: this.props.userData.url
+            url: this.props.userData.url,
+            bool: this.state.bool
         })
     }
 
@@ -35,7 +36,8 @@ class EditProfile extends React.Component {
             name: this.state.name,
             email: this.state.email,
             bio: this.state.bio,
-            url: this.state.url
+            url: this.state.url, 
+            bool: this.state.bool
         }).then(response => {
             if (response.data.type === 'error') {
                 console.log("ERROR:", response.data.message)
