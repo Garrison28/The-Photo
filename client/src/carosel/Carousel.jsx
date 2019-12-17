@@ -72,8 +72,8 @@ const Carousel = (props) => {
         <div className={classes.carousel}>
             <ChevronLeftIcon className={classes.prevItem} onClick={prevItem} />
             <div className={classes.carouselContent}>
-                {/* <h4 className={classes.name}>{current.name}</h4> */}
-                <img className={classes.carouselImage} src={current.img} />
+                <h4 className={classes.name}>{current.name}</h4>
+                <img className={classes.carouselImage} src={current.image} />
             </div>
             <ChevronRightIcon className={classes.nextItem} onClick={nextItem} />
         </div>

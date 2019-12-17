@@ -101,7 +101,7 @@ const Photos = (props) => {
                   <h3 className="inline"><Link to={'/home/categories'} className="waves-effect active">Categories</Link></h3><span className="spacer">|</span><h3 className="inline"><Link to={'/home/photographers'} className="waves-effect active">Photographers</Link></h3>
                   <span className="spacer">|</span><h3 className="inline"><Link to={'/home/photos'} className="waves-effect active">Photos</Link></h3><span className="spacer">|</span><h3 className="inline"><Link to={'/home/addphoto'} className="waves-effect active">Add Photos</Link></h3>
                 </div>
-        <div className={classes.home}>
+        {/* <div className={classes.home}>
           <h3 className={classes.prompt}>Wedding Photos By: Sarah Brink</h3>
           <Carousel items={weddingphotos}
           // updateData={props.updateData}
@@ -130,7 +130,7 @@ const Photos = (props) => {
           <a href="/home/photographers/5deeb660a29dcd0eb35d53c2">
             <Button className={classes.button}>Go to the Photographer!</Button>
           </a>
-        </div>
+        </div> */}
         <div>
           {myMappedImages}
         </div>
