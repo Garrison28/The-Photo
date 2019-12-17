@@ -16,7 +16,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
-// app.use(express.static(__dirname + '/client/build'));
+app.use(express.static(__dirname + '/client/build'));
 app.use(helmet());
 
 mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
@@ -43,9 +43,9 @@ app.use('/locked',
         expressJWT({ secret: process.env.JWT_SECRET }).unless({ method: 'POST'}), 
         require('./routes/locked'));
 
-// app.get('*', (req, res) => {
-//     res.sendFile(__dirname + '/client/build/index.html')
-// })
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/client/build/index.html')
+})
 
 app.listen(process.env.PORT, () => {
     console.log(`Your tuning into Port ${process.env.PORT}...`);
