@@ -94,18 +94,6 @@ const Photos = (props) => {
   } else {
     myImages = ('loading')
   }
-  // let myMappedImages = userImages.map((ele, id) => {
-  //   return(
-  //     <li key={id} className="collection-item">
-  //         <div className="row">
-  //           <div className="col s4">
-  //             <src className="subject-title">{user.photos}</src>
-              
-  //           </div>
-  //         </div>
-  //     </li>
-  //   )
-  // })
   return (
     <>
       <div className="container sidebar-active dashboard-bkgrd" style={{ height: '300vh' }}>
