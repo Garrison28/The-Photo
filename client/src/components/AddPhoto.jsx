@@ -53,27 +53,31 @@ class AddPhoto extends React.Component {
     var content;
     if (this.props.logUse.photographer === true) {
       content = (
-            <div className="container sidebar-active dashboard-bkgrd">
-              <h1 className="inline">Upload Image</h1>
-              <input
-                type="file"
-                name="file"
-                placeholder="Upload an image"
-                onChange={this.uploadImage}
-              />
-              <img src={this.state.displayImage} style={{ width: '300px' }} />
-            </div>
-          )
-      } else {
-        content = (
-          <h1>You must be a photographer to to add photos</h1>
-        )
+        <div className="card-action white-text">
+          <h3 className="inline"><Link to={'/home/categories'} className="waves-effect active">Categories</Link></h3><span className="spacer">|</span><h3 className="inline"><Link to={'/home/photographers'} className="waves-effect active">Photographers</Link></h3>
+          <span className="spacer">|</span><h3 className="inline"><Link to={'/home/photos'} className="waves-effect active">Photos</Link></h3><span className="spacer">|</span><h3 className="inline"><Link to={'/home/addphoto'} className="waves-effect active">Add Photos</Link></h3>
+          <div className="container sidebar-active dashboard-bkgrd">
+            <h1 className="inline">Upload Image</h1>
+            <input
+              type="file"
+              name="file"
+              placeholder="Upload an image"
+              onChange={this.uploadImage}
+            />
+            <img src={this.state.displayImage} style={{ width: '300px' }} />
+          </div>
+        </div>
+      )
+    } else {
+      content = (
+        <h1>You must be a photographer to to add photos</h1>
+      )
     }
 
 
     return (
       // <>
-      
+
       <div className="container sidebar-active dashboard-bkgrd">
         {/* <h1 className="inline">Upload Image</h1>
         <input
@@ -82,7 +86,7 @@ class AddPhoto extends React.Component {
           placeholder="Upload an image"
           onChange={this.uploadImage}
         /> */}
-      {/* <div className="container sidebar-active dashboard-bkgrd"> */}
+        {/* <div className="container sidebar-active dashboard-bkgrd"> */}
         {content}
       </div>
     )
