@@ -23,6 +23,8 @@ const storage = cloudinaryStorage({
 const parser = multer({ storage: storage });
 
 
+
+
 router.post('/photos', (req, res) => {
   console.log('----------------------------------------------', req.body)
   User.findById(req.body.theUserId, (err, user) => {
@@ -31,7 +33,7 @@ router.post('/photos', (req, res) => {
     user.save()
     console.log('the user.photos after save', user.photos)
     res.json(user.photos)
-  })
+  }) 
 });
 
 router.get('/photos/all/:id', (req, res) => {

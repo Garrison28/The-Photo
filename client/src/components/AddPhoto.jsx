@@ -65,7 +65,7 @@ class AddPhoto extends React.Component {
               placeholder="Upload an image"
               onChange={this.uploadImage}
             />
-            <img src={this.state.displayImage} style={{ width: '300px' }} />
+            <img src={this.state.displayImage} style={{ width: '300px', padding: '20px' }} />
           </div>
         </div>
       )

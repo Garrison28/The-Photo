@@ -80,12 +80,13 @@ const Photos = (props) => {
     },
   ]
 
+  axios.get('/')
 
 
   var myImages;
   if (userImages) {
     console.log('these are my userImages', userImages)
-    var myMappedImages = userImages.map((ele, id) => <img key={id} src={ele} style={{width: '300px'}}/>)
+    var myMappedImages = userImages.map((ele, id) => <img key={id} src={ele} style={{width: '300px', padding: '20px'}}/>)
     myImages = (
       <>
         {myMappedImages}
