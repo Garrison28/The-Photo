@@ -37,10 +37,10 @@ const Photos = (props) => {
 
   const classes = useStyles()
   const weddingphotos = [
-    {
-      name: 'Wedding Photos',
-      image: '/weddings/thekiss.jpg'
-    },
+    // {
+    //   name: 'Wedding Photos',
+    //   image: this.state.userImages
+    // },
     {
       name: 'Wedding Photos',
       image: '/weddings/IMG_2553.jpg'
@@ -86,11 +86,13 @@ const Photos = (props) => {
   var myImages;
   if (userImages) {
     console.log('these are my userImages', userImages)
-    var myMappedImages = userImages.map((ele, id) => <img key={id} src={ele} style={{width: '300px', padding: '20px'}}/>)
-    myImages = (
-      <>
-        {myMappedImages}
-      </>
+    var myMappedImages = userImages.map((ele, id) => <img key={id} src={ele} style={{width: '300px', padding: '20px' , borderStyle: 'none'}}/>)
+    myImages = ([{
+      name: "wedding shots",
+      image: {myMappedImages}
+    }]
+      
+      
     )
   } else {
     myImages = ('loading')

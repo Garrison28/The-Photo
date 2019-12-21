@@ -74,9 +74,9 @@ class Categories extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    axios.put(`/home/categories`, {
-      name: this.state.categories.name,
-      content: this.state.categories.content,
+    axios.post(`/home/categories`, {
+      name: this.state.name,
+      content: this.state.content,
     }).then(response => {
       if (response.data.type === 'error') {
         console.log("ERROR:", response.data.message)
@@ -101,7 +101,7 @@ class Categories extends React.Component {
             <div className="col s5">
               <div className="card-action white-text">
 
-                <h3><Link to={'/home/weddingphotos'} className="waves-effect active">Photos</Link></h3>
+                <h3><Link to={'/home/photos'} className="waves-effect active">Photos</Link></h3>
               </div>
             </div>
             <div className="col s3">

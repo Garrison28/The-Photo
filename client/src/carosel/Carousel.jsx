@@ -63,10 +63,10 @@ const Carousel = (props) => {
         setCurrent(props.items[carouselIndex])
     }
 
-    // const handleClick = () => {
-    //     props.updateData(current.name)
-    //     props.updateImage(current.image)
-    // }
+    const handleClick = () => {
+        props.updateData(current.name)
+        props.updateImage(current.image)
+    }
 
     return (
         <div className={classes.carousel}>
